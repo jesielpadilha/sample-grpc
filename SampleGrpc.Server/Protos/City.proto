@@ -1,0 +1,29 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "SampleGrpc.Server.Protos";
+
+
+service CityProtoService {
+	rpc GetCities(GetCityRequest) returns (GetCitiesResponse);
+	rpc GetCityByName(GetCityByNameRequest) returns (CityModel);
+	rpc AddCity(CityModel) returns (AddCityResponse);
+}
+
+message GetCityRequest { }
+
+message GetCityByNameRequest {
+	string name = 1;
+}
+
+message CityModel {
+	string name = 1;
+	string state = 2;
+}
+
+message GetCitiesResponse {
+	repeated CityModel cities = 1;
+}
+
+message AddCityResponse {
+	bool success = 1;
+}
